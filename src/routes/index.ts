@@ -1,12 +1,13 @@
-import { flatMap } from 'lodash';
 import bizRouter from './business'
+const flatMap: any = (arr: any) =>
+  Array.isArray(arr) ? arr.reduce((a, b) => [...a, ...flatMap(b)], []) : [arr];
 
 const Router = [
   {
-    path: '/',
-    routes: [
-      ...flatMap(bizRouter),
-    ]
-  }
-]
-module.exports = Router;
+    name: '/',
+    redirect: '/my',
+  },
+  ...flatMap(bizRouter),
+];
+
+export default Router;

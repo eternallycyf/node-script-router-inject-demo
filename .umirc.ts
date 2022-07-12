@@ -1,5 +1,5 @@
 import { defineConfig } from 'umi';
-const routerConfig = require('./src/routes');
+import routerConfig from './src/routes';
 const proxyConfig = require('./src/config/proxyConfig');
 
 export default defineConfig({
