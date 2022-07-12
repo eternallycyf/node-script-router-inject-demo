@@ -5,9 +5,6 @@
 ## 1 下载依赖和启动命令
 
 ```js
-  "dependencies":{
-    "lodash": "^4.17.21",
-  }
   "devDependencies": {
     "ts-node": "^10.4.0",
     "ejs": "^3.1.6",
@@ -32,7 +29,7 @@
 ## 3 .umirc.ts 引入自动生成的路由文件
 
 ```js
-const routerConfig = require('./src/routes');
+import routerConfig from './src/routes';
 const proxyConfig = require('./src/config/proxyConfig');
 export default defineConfig({
   ...,
@@ -77,17 +74,20 @@ module.exports = {
 
 ## 6 ./src/routes/index.ts 配置路由全部导入
 ```js
-import { flatMap } from 'lodash';
 import bizRouter from './business'
+const flatMap: any = (arr: any) =>
+  Array.isArray(arr) ? arr.reduce((a, b) => [...a, ...flatMap(b)], []) : [arr];
+
 const Router = [
   {
-    path: '/',
-    routes: [
-      ...flatMap(bizRouter),
-    ]
-  }
-]
-module.exports = Router;
+    name: '/',
+    redirect: '/my',
+  },
+  ...flatMap(bizRouter),
+];
+
+export default Router;
+
 ```
 
 ## 7.新建路由示例
