@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path')
-const chalk = require('chalk');
-const ejs = require('ejs');
-type IBusinessList = Array<{ name: string, path: string }>;
+const fs = require("fs");
+const path = require("path");
+const chalk = require("chalk");
+const ejs = require("ejs");
+type IBusinessList = Array<{ name: string; path: string }>;
 function getAllBiz(source: string): IBusinessList {
   if (!fs.existsSync(source)) {
     console.log(chalk.yellow(`目录不存在${source}`));
@@ -10,8 +10,8 @@ function getAllBiz(source: string): IBusinessList {
   }
   const folders: Array<string> = fs.readdirSync(source);
   const bizList: IBusinessList = [];
-  folders.forEach(item => {
-    const itemPath = path.resolve(__dirname, `../src/business/views/${item}/`);
+  folders.forEach((item) => {
+    const itemPath = path.resolve(__dirname, `../src/pages/${item}/`);
     bizList.push({
       name: item,
       path: itemPath,
@@ -19,19 +19,22 @@ function getAllBiz(source: string): IBusinessList {
   });
   return bizList;
 }
-const targetFile: string = path.resolve(__dirname, '../src/routes/business.ts');
-const bizPath: string = path.resolve(__dirname, '../src/business/views');
-const templatePath: string = path.resolve(__dirname, './biz-stage-config.ts.ejs');
+const targetFile: string = path.resolve(__dirname, "../src/routes/routes.ts");
+const bizPath: string = path.resolve(__dirname, "../src/pages");
+const templatePath: string = path.resolve(
+  __dirname,
+  "./biz-stage-config.ts.ejs",
+);
 
 console.log(chalk.green(`配置插件...`));
 
-const template: Buffer = fs.readFileSync(templatePath, 'utf8');
+const template: Buffer = fs.readFileSync(templatePath, "utf8");
 const bizList: IBusinessList = getAllBiz(bizPath);
 const result = ejs.render(template, { plugins: bizList });
 
 fs.writeFile(targetFile, result, (err: NodeJS.ErrnoException) => {
   if (err) {
-    console.error('write file error', err);
+    console.error("write file error", err);
   } else {
     console.log(chalk.green(`配置插件完成: ${targetFile}\n`));
   }

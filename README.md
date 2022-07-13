@@ -74,16 +74,12 @@ module.exports = {
 
 ## 6 ./src/routes/index.ts 配置路由全部导入
 ```js
-import bizRouter from './business'
+import Routes from './routes';
 const flatMap: any = (arr: any) =>
   Array.isArray(arr) ? arr.reduce((a, b) => [...a, ...flatMap(b)], []) : [arr];
 
 const Router = [
-  {
-    name: '/',
-    redirect: '/my',
-  },
-  ...flatMap(bizRouter),
+  ...flatMap(Routes),
 ];
 
 export default Router;
@@ -92,25 +88,23 @@ export default Router;
 
 ## 7.新建路由示例
 ```js
-#  ./src/business/views/my/stage-config.ts
+#  ./src/pages/My/routes.ts
 export default {
+  name: 'my',
   path: '/my',
-  name: "我的",
-  routes: [
-    {
-      path: '/my',
-      name: '我的',
-      component: '@/business/views/my/my',
-    }
-  ],
-}
-# ./src/business/views/my/my.tsx
-const My = () => {
+  component: '@/pages/my',
+};
+
+# ./src/pages/My/index.tsx
+import { Button } from 'antd';
+
+const My: React.FC = () => {
   return (
-    <>my node script demo</>
-  )
-}
-export default My
+    <Button>My</Button>
+  );
+};
+
+export default My;
 ```
 
 ## 8 配置全局 ts module
@@ -165,7 +159,7 @@ declare module 'umi/locale' {
 
 ## 9 安装依赖和测试 yarn && yarn biz-init
 ```js
-就可以看到自动生成了 ./src/routes/business.ts 文件
+就可以看到自动生成了 ./src/routes/routes.ts 文件
 且node脚本自动引入导出了路由
 ```
 

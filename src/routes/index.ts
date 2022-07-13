@@ -1,13 +1,7 @@
-import bizRouter from './business'
+import Routes from "./routes";
 const flatMap: any = (arr: any) =>
   Array.isArray(arr) ? arr.reduce((a, b) => [...a, ...flatMap(b)], []) : [arr];
 
-const Router = [
-  {
-    name: '/',
-    redirect: '/my',
-  },
-  ...flatMap(bizRouter),
-];
+const Router = [...flatMap(Routes)];
 
 export default Router;
