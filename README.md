@@ -168,3 +168,34 @@ declare module 'umi/locale' {
 http://localhost:8000/my
 ```
 
+## 自动生成面包屑
+```js
+# 依照umi约定式路由规则 在pages目录下嵌套文件夹即可
+{
+  name: "权限管理",
+  path: "/access",
+  routes: [
+    {
+      name: '权限管理',
+      path: '/access',
+      redirect: '/access/home',
+      hideInMenu: true,
+    },
+    {
+      name: '权限主页',
+      path: '/access/home',
+      component: "@/pages/Access/Home"
+    },
+    {
+      name: '添加权限',
+      path: '/access/add',
+      component: '@/pages/Access/Add'
+    }
+  ]
+};
+# 在需要面包屑导航的页面使用高级组件包裹即可自动生成
+import { PageContainer } from '@ant-design/pro-layout';
+    <PageContainer>
+      ...
+    </PageContainer>
+```
