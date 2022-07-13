@@ -1,6 +1,6 @@
 {
   "private": true,
-  "scripts": {https://github.com/eternallycyf/node-script-router-inject-demo/blob/main/package.json
+  "scripts": {
     "biz-init": "ts-node scripts/generateBizConfig.ts",
     "start": "npm run biz-init && cross-env APP_ENV=development umi dev",
     "build:dev": "npm run biz-init && cross-env APP_ENV=development umi build",
