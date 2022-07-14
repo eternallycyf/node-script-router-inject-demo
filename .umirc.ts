@@ -15,7 +15,7 @@ export default defineConfig({
     "primary-color": "#00CA88",
   },
   routes: routerConfig,
-  proxy: proxyConfig,
+  // proxy: proxyConfig,
   base: process.env.APP_ENV === "development" ? "/" : "/ims-app/",
   publicPath: process.env.APP_ENV === "development" ? "/" : "/ims-app/",
   fastRefresh: {},
