@@ -1,5 +1,5 @@
 export default {
-  name: "my",
+  name: "我的",
   path: "/my",
   component: "@/pages/my",
 };

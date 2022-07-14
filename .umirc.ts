@@ -7,8 +7,12 @@ export default defineConfig({
     "process.env": process.env,
   },
   layout: {
-    title: "@umijs/max",
+    title: "node脚本demo",
+    contentWidth: "Fluid",
     navTheme: "light",
+  },
+  theme: {
+    "primary-color": "#00CA88",
   },
   routes: routerConfig,
   proxy: proxyConfig,

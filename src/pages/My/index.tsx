@@ -1,7 +1,14 @@
-import { Button } from "antd";
+import { Button, Card } from "antd";
+import { PageContainer } from "@ant-design/pro-layout";
 
 const My: React.FC = () => {
-  return <Button>My</Button>;
+  return (
+    <>
+      <PageContainer>
+        <Card title="我的" style={{ margin: 24, height: "81vh" }} />
+      </PageContainer>
+    </>
+  );
 };
 
 export default My;
