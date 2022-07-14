@@ -1,11 +1,10 @@
 import { Button, Card, Select, Spin } from "antd";
 import { PageContainer } from "@ant-design/pro-layout";
 import { connect } from "umi";
-import { MyConnectType } from "./my";
-import { IProps } from "./interface";
+import { IMyConnectState, IMyProps } from "./interface";
 import Charts from "./Components/charts";
 
-const My: React.FC = ({ dispatch, list, myLoading }: IProps) => {
+const My: React.FC = ({ dispatch, list, myLoading }: IMyProps) => {
   console.log(myLoading, list);
 
   return (
@@ -25,7 +24,7 @@ const My: React.FC = ({ dispatch, list, myLoading }: IProps) => {
   );
 };
 
-export default connect(({ My, loading }: MyConnectType) => ({
+export default connect(({ My, loading }: IMyConnectState) => ({
   ...My,
   myLoading: loading.effects["My/fetch"],
 }))(My);

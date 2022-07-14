@@ -1,14 +1,15 @@
 import { AnyAction } from "redux";
-import { EffectsCommandMap } from "dva";
+import { EffectsCommandMap, Subscription } from "dva";
 import { RouteComponentProps } from "react-router";
-// import { WrappedFormUtils } from '@ant-design/compatible/es/form/Form';
+import { WrappedFormUtils } from "@ant-design/compatible/es/form/Form";
 import { IGlobalModelState } from "./global";
+import { Reducer } from "redux";
 
 export interface Loading {
   global: boolean;
   effects: { [key: string]: boolean | undefined };
   models: {
-    app?: boolean;
+    [key: string]: boolean;
   };
 }
 
@@ -24,6 +25,20 @@ export interface ConnectProps<P extends { [K in keyof P]?: string } = {}>
   extends Partial<RouteComponentProps<any>> {
   dispatch?: Dispatch;
   form?: WrappedFormUtils;
+}
+
+export interface IModel {
+  // namespace: "My";
+  // state: IMyState;
+  effects: {
+    fetch: Effect;
+  };
+  reducers: {
+    save: Reducer<any>;
+  };
+  subscriptions: {
+    setup: Subscription;
+  };
 }
 
 export type Effect = (

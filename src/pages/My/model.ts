@@ -1,6 +1,6 @@
 import * as service from "./service";
 import { message } from "antd";
-import { IMyModel } from "./my";
+import { IMyModel } from "./interface";
 
 let MyModel: IMyModel = {
   namespace: "My",
