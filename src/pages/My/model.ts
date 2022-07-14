@@ -1,7 +1,8 @@
 import * as service from "./service";
 import { message } from "antd";
+import { IMyModel } from "./my";
 
-export default {
+let MyModel: IMyModel = {
   namespace: "My",
   state: {
     list: [],
@@ -38,3 +39,5 @@ export default {
     },
   },
 };
+
+export default MyModel;

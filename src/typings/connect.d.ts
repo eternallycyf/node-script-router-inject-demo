@@ -2,7 +2,6 @@ import { AnyAction } from "redux";
 import { EffectsCommandMap } from "dva";
 import { RouteComponentProps } from "react-router";
 // import { WrappedFormUtils } from '@ant-design/compatible/es/form/Form';
-import { IMyState } from "./my";
 import { IGlobalModelState } from "./global";
 
 export interface Loading {
@@ -16,7 +15,6 @@ export interface Loading {
 export interface ConnectState {
   loading: Loading;
   global: IGlobalModelState;
-  My: IMyState;
 }
 
 /**
