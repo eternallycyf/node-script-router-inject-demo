@@ -27,9 +27,9 @@ export interface ConnectProps<P extends { [K in keyof P]?: string } = {}>
   form?: WrappedFormUtils;
 }
 
-export interface IModel {
-  // namespace: "My";
-  // state: IMyState;
+export interface IModel<T, U> {
+  namespace: T;
+  state: U;
   effects: {
     fetch: Effect;
   };

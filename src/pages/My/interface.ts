@@ -6,10 +6,7 @@ interface IMyState {
 }
 
 // model 对象的接口
-export interface IMyModel extends IModel {
-  namespace: "My";
-  state: IMyState;
-}
+export interface IMyModel extends IModel<"My", IMyState> {}
 
 // connect -> mapStateToProps的接口
 export interface IMyConnectState extends ConnectState {
