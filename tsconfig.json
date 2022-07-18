@@ -16,6 +16,6 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./typings/*.ts", "./src/**/*"],
+  // "include": ["./typings/*.ts", "./src/**/*"],
   "exclude": ["node_modules", "jest"]
 }

@@ -1,5 +1,4 @@
 declare module "*.css";
-declare module "*.less";
 declare module ".svg";
 declare module "*.png";
 declare module "*.jpg";
@@ -8,6 +7,7 @@ declare module "*.gif";
 declare module "*.bmp";
 declare module "*.tiff";
 declare module "*.x1sx";
+declare module "*.less";
 
 export interface IGlobalModelState {
   theme: "dark" | "light";
