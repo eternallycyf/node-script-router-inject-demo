@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Card } from "antd";
-import { Filter } from "./queryform";
-import { filterList } from "./constant";
+import { Filter } from "@/components/QueryForm";
+import searchList from "./constant";
 import { PageContainer } from "@ant-design/pro-layout";
 
 const Queryform: FC<any> = () => {
@@ -13,7 +13,7 @@ const Queryform: FC<any> = () => {
     <PageContainer>
       <Card title="我的" style={{ margin: 24, height: "81vh" }}>
         <Filter
-          filterList={filterList}
+          filterList={searchList}
           onSearch={(values: any) => onSearch(values)}
         />
       </Card>

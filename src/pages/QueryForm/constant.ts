@@ -1,19 +1,32 @@
-export const filterList = [
+export default [
   {
-    tagName: "input",
-    key: "name",
+    formType: "input",
+    name: "name",
     label: "模糊搜索",
     placeholder: "请输入姓名/ID/手机后4位/站点地址",
+    // rules: [
+    //   {
+    //     required: true,
+    //   },
+    // ],
+    itemProps: {
+      rules: [
+        {
+          required: true,
+        },
+      ],
+      initialValue: "22",
+    },
   },
   {
-    tagName: "datepicker",
-    key: "datepickerItem",
+    formType: "datepicker",
+    name: "datepickerItem",
     label: "创建日期",
     allowClear: true,
   },
   {
-    tagName: "select",
-    key: "site",
+    formType: "select",
+    name: "site",
     label: "站点",
     defaultValue: null,
     placeholder: "请选择站点",
@@ -27,10 +40,11 @@ export const filterList = [
         name: "站点2",
       },
     ],
+    initialValue: 0,
   },
   {
-    tagName: "treeselect",
-    key: "state",
+    formType: "treeselect",
+    name: "state",
     label: "状态",
     defaultValue: null,
     placeholder: "请选择状态",

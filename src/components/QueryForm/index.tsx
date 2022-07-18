@@ -15,7 +15,7 @@ import {
   TimePicker,
 } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import styles from "./queryform.less";
+import styles from "./index.less";
 const { RangePicker } = DatePicker;
 
 const { Option } = Select;
@@ -67,7 +67,7 @@ export const Filter = ({
     onSearch && onSearch(values);
   };
 
-  const getFormElement = (tagname: string, oItem: any) => {
+  const getFormElement = (formtype: string, oItem: any) => {
     /** onPressEnter会自动执行 */
     let item: any = {};
     for (let key in oItem) {
@@ -82,7 +82,7 @@ export const Filter = ({
       onChange: () => autoSearch && onFinish(form.getFieldsValue()),
       onSelect: () => autoSearch && onFinish(form.getFieldsValue()),
     };
-    switch (tagname) {
+    switch (formtype) {
       case "input":
         return <Input allowClear {...item} />;
       case "inputnumber":
@@ -150,28 +150,31 @@ export const Filter = ({
     >
       <Row gutter={24}>
         {list.map((item: any, i: number) => {
-          const tagname = (item.tagname || "").toLowerCase();
+          const formtype = (item.formtype || "").toLowerCase();
 
-          if (tagname !== "input" && item.rules) {
+          if (formtype !== "input" && item.rules) {
             // delete item.rules;
             item.rules = null;
           }
 
-          const itemName = item.key;
+          const itemName = item.name;
+          const { itemprops } = item;
+
           return (
             <Col
-              span={tagname === "switch" ? 2.5 : span}
-              key={item.key + i}
+              span={formtype === "switch" ? 2.5 : span}
+              key={item.name + i}
               style={{
-                minWidth: tagname === "switch" ? "auto" : "200px",
+                minWidth: formtype === "switch" ? "auto" : "200px",
               }}
             >
               <Form.Item
                 name={itemName}
                 label={item.label}
-                rules={item.rules ? [item.rules] : []}
+                rules={item.rules ? item.rules : []}
+                {...itemprops}
               >
-                {getFormElement(tagname, item)}
+                {getFormElement(formtype, item)}
               </Form.Item>
             </Col>
           );
