@@ -199,3 +199,32 @@ import { PageContainer } from '@ant-design/pro-layout';
       ...
     </PageContainer>
 ```
+
+
+## 自动生成多页签
+```js
+# 
+https://github.com/fangzhengjin/umi-plugin-panel-tabs
+npm i umi-plugin-panel-tabs
+
+#
+  panelTab: {
+    use404: true,
+    useAuth: true,
+    autoI18n: true,
+    // 打开多少页签时弹出提示
+    tabsLimit: 10,
+    // 防抖时间
+    tabsLimitWait: 500,
+    tabsLimitWarnTitle: '提示',
+    tabsLimitWarnContent: '您当前打开页面过多, 请关闭不使用的页面以减少卡顿!',
+    tabsBarBackgroundColor: '#FFFFFF',
+    tabsTagColor: '#1890ff',
+  },
+# 
+  当route具有name就会显示页签
+  添加hideInPanelTab:true 就隐藏页签
+# 其他方案
+https://github.com/fangzhengjin/umi-plugin-panel-tabs
+https://github.com/MudOnTire/antd-pro-page-tabs
+```
