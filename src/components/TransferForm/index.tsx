@@ -117,6 +117,9 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
   };
 
   const handleModalOk = () => {
+    formRef.setFieldsValue({
+      [falseSelectItmeName]: findAllMessage(originData, targetKeys),
+    });
     setVisible(false);
     transferOkCallBack && transferOkCallBack();
   };
