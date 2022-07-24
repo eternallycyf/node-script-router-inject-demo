@@ -1,11 +1,10 @@
-import { Switch, Transfer, Button, Checkbox, Modal } from "antd";
+import { Transfer, Checkbox, Modal } from "antd";
 import React, {
   useState,
   useImperativeHandle,
   useRef,
   useEffect,
   forwardRef,
-  Ref,
 } from "react";
 import styles from "./index.less";
 import { Form, Select } from "antd";
