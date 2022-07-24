@@ -53,6 +53,11 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
     falseSelectItmeName = "test",
   } = props;
 
+  useEffect(() => {
+    (document.getElementsByClassName("ant-input")[0] as any).placeholder =
+      "请输入第三方机构名称";
+  }, []);
+
   // 当重新设置数据源 情况所有数据
   useEffect(() => {
     setTargetKeys([]);
@@ -130,7 +135,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
         <div className={styles.transferBox} ref={transferBox}>
           <Modal
             width={1000}
-            title="选择三方机构"
+            title="选择第三方机构"
             getContainer={transferBox?.current}
             visible={visible}
             okText="确定"
@@ -140,6 +145,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
             forceRender={true}
             centered={true}
             maskClosable={false}
+            bodyStyle={{ paddingBottom: 0 }}
             {...modalProps}
           >
             <Transfer
