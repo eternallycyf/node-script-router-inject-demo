@@ -68,12 +68,12 @@ export const Test = () => <Charts />;
 storiesOf("Button Component", module)
   .addParameters({
     info: {
-      text: "这是标题",
+      text: "这是特使想",
       inline: true,
     },
     layout: "padded",
   })
-  .add("Button", defaultButton)
+  .add("测试button", defaultButton)
   .add("不同尺寸的 Button", buttonWithSize)
   .add("不同类型的 Button", buttonWithType)
   .add("我的charts", Test);
