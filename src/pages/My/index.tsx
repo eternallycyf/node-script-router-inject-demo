@@ -16,6 +16,18 @@ const My: React.FC = ({ dispatch, list, myLoading }: IMyProps) => {
             style={{ margin: 24, height: "81vh" }}
             extra={<Select options={list} style={{ width: 200 }} />}
           >
+            <div>.</div>
+            <div>├── Components</div>
+            <div>│   ├── charts.tsx</div>
+            <div>│   ├── columns.tsx</div>
+            <div>│   └── search.tsx</div>
+            <div>├── index.less</div>
+            <div>├── index.tsx</div>
+            <div>├── interface.ts</div>
+            <div>├── model.ts</div>
+            <div>├── routes.ts</div>
+            <div>├── service.ts</div>
+            <div>└── utils.ts</div>
             <Charts />
           </Card>
         </Spin>

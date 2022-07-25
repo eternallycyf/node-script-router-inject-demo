@@ -1,4 +1,4 @@
-import TransferForm from "@/components/TransferForm";
+import { TransferHookForm } from "@/components/TransferForm";
 import styles from "./index.less";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button } from "antd";
@@ -42,25 +42,31 @@ const TransferDemo = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          TransferRef.current[0].useVisible(true);
-        }}
-      >
-        打开0
-      </button>
-      <button
-        onClick={() => {
-          TransferRef.current[1].useVisible(true);
-        }}
-      >
-        打开1
-      </button>
-      <button onClick={() => testData()}>set</button>
+      <h1>
+        <button
+          onClick={() => {
+            TransferRef.current[0].useVisible(true);
+          }}
+        >
+          打开穿梭框1
+        </button>
+      </h1>
+      <h1>
+        <button
+          onClick={() => {
+            TransferRef.current[1].useVisible(true);
+          }}
+        >
+          打开穿梭框2
+        </button>
+      </h1>
+      <h1>
+        <button onClick={() => testData()}>两个都设置新的测试数据</button>
+      </h1>
+      <h1>可遍历生成无限个</h1>
       <Form form={form} onFinish={onFinish}>
-        ssssss
         <Form.Item style={{ display: "inline-block" }}>
-          <TransferForm
+          <TransferHookForm
             formRef={form}
             originData={mockData}
             ref={(el) => (TransferRef.current[0] = el)}
@@ -68,7 +74,7 @@ const TransferDemo = () => {
           />
         </Form.Item>
         <Form.Item style={{ display: "inline-block" }}>
-          <TransferForm
+          <TransferHookForm
             formRef={form}
             originData={mockData}
             ref={(el) => (TransferRef.current[1] = el)}
@@ -76,7 +82,6 @@ const TransferDemo = () => {
             falseSelectItmeName="asasd"
           />
         </Form.Item>
-        sssss
         <Button type="primary" htmlType="submit">
           Submit
         </Button>

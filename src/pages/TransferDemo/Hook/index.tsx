@@ -1,4 +1,4 @@
-import TransferForm from "@/components/TransferForm";
+import { TransferHookForm } from "@/components/TransferForm";
 import styles from "./index.less";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button } from "antd";
@@ -44,25 +44,27 @@ const TransferDemo = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          TransferRef.current.useVisible(true);
-        }}
-      >
-        打开
-      </button>
-      <button onClick={() => testData()}>set</button>
+      <h1>
+        <button
+          onClick={() => {
+            TransferRef.current.useVisible(true);
+          }}
+        >
+          打开穿梭框
+        </button>
+      </h1>
+      <h1>
+        <button onClick={() => testData()}>设置新的测试数据</button>
+      </h1>
       <Form form={form} onFinish={onFinish}>
-        ssssss
         <Form.Item style={{ display: "inline-block" }}>
-          <TransferForm
+          <TransferHookForm
             formRef={form}
             originData={mockData}
             ref={TransferRef}
             transferOkCallBack={() => transferOkCallBack()}
           />
         </Form.Item>
-        sssss
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
