@@ -8,7 +8,9 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -23,23 +25,36 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.1",
-    "@ant-design/icons": "^4.7.0",
     "@ant-design/compatible": "^1.1.0",
+    "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-layout": "^6.5.0",
+    "@types/storybook__addon-info": "^5.2.4",
     "react": "17.x",
     "react-dom": "17.x",
     "umi": "^3.5.28",
     "umi-plugin-panel-tabs": "0.0.28"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.5.28",
+    "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "ejs": "^3.1.6",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
+    "react-docgen-typescript-loader": "^3.7.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.1.2",
     "yorkie": "^2.0.0"

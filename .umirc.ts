@@ -1,6 +1,8 @@
 import { defineConfig } from "umi";
 import routerConfig from "./src/routes";
 const proxyConfig = require("./src/config/proxyConfig");
+const docgenLoader = require("react-docgen-typescript-loader");
+const path = require("path");
 
 export default defineConfig({
   define: {
@@ -33,5 +35,29 @@ export default defineConfig({
     tabsLimitWarnContent: "您当前打开页面过多, 请关闭不使用的页面以减少卡顿!",
     tabsBarBackgroundColor: "#FFFFFF",
     tabsTagColor: "#1890ff",
+  },
+  chainWebpack(config) {
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      include: path.resolve(__dirname, "./src"),
+      use: [
+        require.resolve("ts-loader"),
+        {
+          loader: require.resolve("react-docgen-typescript-loader"),
+          options: {
+            shouldExtractLiteralValuesFromEnum: true,
+            tsconfigPath: path.resolve(__dirname, "../tsconfig.json"),
+            propFilter: (prop) => {
+              if (prop.parent) {
+                return !prop.parent.fileName.includes("node_modules");
+              }
+              return true;
+            },
+          },
+        },
+      ],
+    });
+    config.resolve.extensions.push(".ts", ".tsx");
+    return config;
   },
 });
