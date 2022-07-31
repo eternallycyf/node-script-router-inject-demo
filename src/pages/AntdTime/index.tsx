@@ -1,10 +1,11 @@
-const AntdTime = () => {
+import Picker1 from "./Picker1";
+import Picker2 from "./Picker2";
+
+export default function IndexPage() {
   return (
     <>
-      <a href="https://github.com/eternallycyf/React-Antd-TimeDisabled-demo">
-        github链接
-      </a>
+      <Picker1 />
+      <Picker2 />
     </>
   );
-};
-export default AntdTime;
+}
