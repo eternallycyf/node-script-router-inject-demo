@@ -72,7 +72,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
       return [targetKeys, originData];
     },
     setData: (arr: any) => {
-      setSelectedKeys(arr);
+      setTargetKeys(arr);
     },
     useVisible: (bool: boolean) => {
       setVisible(bool);

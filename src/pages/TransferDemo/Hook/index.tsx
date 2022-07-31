@@ -20,6 +20,14 @@ const TransferDemo = () => {
       description: `description of content${i + 1}`,
     }));
     setMockData(initData);
+
+    // init data need asynchronous for waiting formRef init
+    setTimeout(function () {
+      form.setFieldsValue({
+        test: [{ lable: "sxx", value: 1, key: 1 }],
+      });
+      TransferRef.current.setData(["1", "2"]);
+    }, 0);
   }, []);
 
   const testData = () => {

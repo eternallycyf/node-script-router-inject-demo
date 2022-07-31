@@ -90,7 +90,7 @@ const TransferForm = (props: Iprops) => {
         ? [...targetKeys, moveKeys]
         : targetKeys.filter((key: any) => !moveKeys.includes(key));
     setTargetKeys([...newKeys]);
-    setSelectedKeys([]);
+    setTargetKeys([]);
   };
 
   const handleSelectChange = (
