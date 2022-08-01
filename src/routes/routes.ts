@@ -2,6 +2,7 @@
 import Access from "../pages/Access/routes";
 import AntdTime from "../pages/AntdTime/routes";
 import FormLayout from "../pages/FormLayout/routes";
+import Markdown from "../pages/Markdown/routes";
 import MuitipleRef from "../pages/MuitipleRef/routes";
 import My from "../pages/My/routes";
 import QueryForm from "../pages/QueryForm/routes";
@@ -12,6 +13,7 @@ export default [
   Access,
   AntdTime,
   FormLayout,
+  Markdown,
   MuitipleRef,
   My,
   QueryForm,
