@@ -2,13 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const markdown = `Here is some JavaScript code:
-~~~js
-console.log('It works!')
-~~~
-`;
-
-export default (props) => {
+export default (props: any) => {
   return (
     <ReactMarkdown
       children={props.markdown}

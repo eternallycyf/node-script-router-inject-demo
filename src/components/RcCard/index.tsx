@@ -12,7 +12,7 @@ import "./index.less";
  * @param {ReactNode} description 分割线下的描述内容
  * @param {string} code 代码块
  */
-const RcCard = (props) => {
+const RcCard = (props: any) => {
   const {
     content = "",
     descriptionTitle = "",
@@ -33,7 +33,7 @@ const RcCard = (props) => {
           <SyntaxHighlighter
             showLineNumbers
             language="javascript"
-            style={dracula}
+            style={atomDark}
           >
             {content.toString()}
           </SyntaxHighlighter>
