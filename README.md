@@ -280,3 +280,7 @@ git push -f git@github.com:eternallycyf/node-script-router-inject-demo.git maste
 
 cd -
 ```
+
+## 代码定位
+
+在浏览器中使用ctrl+y 就可选择需要跳转的代码模块 单击就可跳转相应代码
