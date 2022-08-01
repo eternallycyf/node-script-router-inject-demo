@@ -8,6 +8,16 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  history: { type: "hash" },
+  publicPath:
+    process.env.APP_ENV === "development"
+      ? "/"
+      : "http://wangxince.site/node-script-router-inject-demo/",
+  nodeModulesTransform: {
+    type: "none",
+  },
+  hash: true,
+  dynamicImport: {},
   layout: {
     title: "node脚本demo",
     contentWidth: "Fluid",
@@ -18,12 +28,7 @@ export default defineConfig({
   },
   routes: routerConfig,
   // proxy: proxyConfig,
-  base: process.env.APP_ENV === "development" ? "/" : "/ims-app/",
-  publicPath: process.env.APP_ENV === "development" ? "/" : "/ims-app/",
   fastRefresh: {},
-  nodeModulesTransform: {
-    type: "none",
-  },
   mfsu: false,
   panelTab: {
     use404: true,
