@@ -24,7 +24,6 @@ export default defineConfig({
   nodeModulesTransform: {
     type: "none",
   },
-  open: true,
   mfsu: false,
   panelTab: {
     use404: true,
