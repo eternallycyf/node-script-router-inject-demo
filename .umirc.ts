@@ -41,4 +41,5 @@ export default defineConfig({
     tabsBarBackgroundColor: "#FFFFFF",
     tabsTagColor: "#1890ff",
   },
+  plugins: ["react-dev-inspector/plugins/umi/react-inspector"],
 });

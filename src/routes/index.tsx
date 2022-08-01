@@ -1,3 +1,4 @@
+import { Component } from "react";
 import Routes from "./routes";
 const flatMap: any = (arr: any) =>
   Array.isArray(arr) ? arr.reduce((a, b) => [...a, ...flatMap(b)], []) : [arr];
