@@ -6,7 +6,7 @@ declare module "*.jpeg";
 declare module "*.gif";
 declare module "*.bmp";
 declare module "*.tiff";
-declare module "*.x1sx";
+declare module "*.xlsx";
 declare module "*.less";
 
 export interface IGlobalModelState {
