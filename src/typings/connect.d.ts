@@ -1,16 +1,14 @@
-import { AnyAction } from "redux";
-import { EffectsCommandMap, Subscription } from "dva";
-import { RouteComponentProps } from "react-router";
-import { WrappedFormUtils } from "@ant-design/compatible/es/form/Form";
-import { IGlobalModelState } from "./global";
-import { Reducer } from "redux";
+import type { AnyAction } from "redux";
+import type { EffectsCommandMap, Subscription } from "dva";
+import type { RouteComponentProps } from "react-router";
+import type { WrappedFormUtils } from "@ant-design/compatible/es/form/Form";
+import type { IGlobalModelState } from "./global";
+import type { Reducer } from "redux";
 
 export interface Loading {
   global: boolean;
-  effects: { [key: string]: boolean | undefined };
-  models: {
-    [key: string]: boolean;
-  };
+  effects: Record<string, boolean | undefined>;
+  models: Record<string, boolean>;
 }
 
 export interface ConnectState {

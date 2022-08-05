@@ -1,6 +1,7 @@
-interface IFormatValues { [key: string]: string | number } declare const formatMessage: (
+type IFormatValues = Record<string, string | number>;
+declare const formatMessage: (
   { id }: { id: string },
-  values?: IFormatValues
+  values?: IFormatValues,
 ) => string;
 declare const getLocale: () => string;
 declare const setLocale: (lang: string) => string;
@@ -14,7 +15,7 @@ declare class FormattedMessage extends React.Component<
   render(): JSX.Element;
 }
 
-declare module 'umi/locale' {
+declare module "umi/locale" {
   export const formatMessage;
   export const setLocale;
   export const getLocale;
