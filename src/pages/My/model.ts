@@ -1,8 +1,7 @@
 import * as service from "./service";
-import { message } from "antd";
-import { IMyModel } from "./interface";
+import type { IMyModel } from "./interface";
 
-let MyModel: IMyModel = {
+const MyModel: IMyModel = {
   namespace: "My",
   state: {
     list: [],
@@ -14,6 +13,7 @@ let MyModel: IMyModel = {
   },
   effects: {
     *fetch(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       { payload: { page = 1, pageSize = 8, ...restProps } },
       { call, put },
     ) {

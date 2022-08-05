@@ -1,5 +1,4 @@
 import { TransferHookForm } from "@/components/TransferForm";
-import styles from "./index.less";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button } from "antd";
 
@@ -7,7 +6,7 @@ const TransferDemo = () => {
   // const TransferRef = useRef(null)
   const [form] = Form.useForm();
   const [mockData, setMockData] = useState<any>([]);
-  const TransferRef = useRef([]);
+  const TransferRef = useRef<any>([]);
 
   useEffect(() => {
     const initData = Array.from({
@@ -32,6 +31,7 @@ const TransferDemo = () => {
   };
 
   const transferOkCallBack = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { getData } = TransferRef.current[0];
     console.log(form?.getFieldValue("test"));
   };

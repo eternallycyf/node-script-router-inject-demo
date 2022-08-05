@@ -72,14 +72,14 @@ export default class ToolClass {
     CurrentFormMoment: moment.MomentInput,
   ) => {
     // startTimes
-    let startHours = moment(StartFormMoment).hour();
-    let startMinutes = moment(StartFormMoment).minute();
-    let startSeconds = moment(StartFormMoment).second();
-    let startDate = moment(StartFormMoment).date();
+    const startHours = moment(StartFormMoment).hour();
+    const startMinutes = moment(StartFormMoment).minute();
+    const startSeconds = moment(StartFormMoment).second();
+    const startDate = moment(StartFormMoment).date();
     // currentTimes
-    let currentHours = moment(CurrentFormMoment).hour();
-    let currentMinutes = moment(CurrentFormMoment).minute();
-    let currentDate = moment(CurrentFormMoment).date();
+    const currentHours = moment(CurrentFormMoment).hour();
+    const currentMinutes = moment(CurrentFormMoment).minute();
+    const currentDate = moment(CurrentFormMoment).date();
     if (CurrentFormMoment == undefined) {
       return {};
     }

@@ -5,7 +5,7 @@ import React, {
   forwardRef,
 } from "react";
 
-const Child = (props, ModalRef) => {
+const Child = (props: any, ModalRef: any) => {
   useImperativeHandle(ModalRef, () => ({
     getData: () => {
       return [1, 2, 3];
@@ -22,7 +22,7 @@ const Child = (props, ModalRef) => {
 const Children = forwardRef(Child);
 
 const Father = () => {
-  const ModalRef = useRef(null);
+  const ModalRef = useRef<any>(null);
 
   useEffect(() => {
     console.log(ModalRef.current.getData());

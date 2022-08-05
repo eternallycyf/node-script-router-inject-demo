@@ -1,4 +1,4 @@
-import moment from "moment";
+import type moment from "moment";
 import { Form, DatePicker } from "antd";
 import ToolClass from "../toolClass";
 const Picker1 = () => {

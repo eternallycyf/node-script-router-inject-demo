@@ -1,11 +1,10 @@
 import { TransferClassForm } from "@/components/TransferForm";
-import styles from "./index.less";
 import React from "react";
 import { Form, Button } from "antd";
 import type { FormInstance } from "antd/es/form";
 export default class TransferDemo extends React.Component {
-  TransferRef = React.createRef();
-  formRef = React.createRef<FormInstance>();
+  TransferRef: any = React.createRef();
+  formRef: any = React.createRef<FormInstance>();
   state = {
     mockData: [],
   };
@@ -33,6 +32,7 @@ export default class TransferDemo extends React.Component {
   };
 
   transferOkCallBack = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { getData } = this.TransferRef.current;
     const ref = this.formRef.current;
     console.log(ref?.getFieldValue("test"));

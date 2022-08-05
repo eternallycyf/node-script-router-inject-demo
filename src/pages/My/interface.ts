@@ -1,4 +1,4 @@
-import { ConnectState, ConnectProps, IModel } from "@/typings/connect";
+import type { ConnectState, ConnectProps, IModel } from "@/typings/connect";
 
 // model -> state 接口
 interface IMyState {
@@ -6,7 +6,7 @@ interface IMyState {
 }
 
 // model 对象的接口
-export interface IMyModel extends IModel<"My", IMyState> {}
+export type IMyModel = IModel<"My", IMyState>;
 
 // connect -> mapStateToProps的接口
 export interface IMyConnectState extends ConnectState {

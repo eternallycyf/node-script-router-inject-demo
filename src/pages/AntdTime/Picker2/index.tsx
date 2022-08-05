@@ -1,5 +1,5 @@
 import { useState } from "react";
-import moment from "moment";
+import type moment from "moment";
 import { Form, DatePicker } from "antd";
 const { RangePicker } = DatePicker;
 import ToolClass from "../toolClass";
@@ -13,7 +13,7 @@ const Picker2 = () => {
     CurrentFormMoment: moment.MomentInput,
     type: string,
   ) => {
-    let StartTime1 = disabledTimeDates1?.[0];
+    const StartTime1 = disabledTimeDates1?.[0];
     if (type === "end") {
       return transformFn.disabledTime(StartTime1, CurrentFormMoment);
     }
@@ -24,9 +24,9 @@ const Picker2 = () => {
     type: string,
   ) => {
     // startTime1
-    let StartTime1 = form.getFieldValue("startTime")?.[0];
+    const StartTime1 = form.getFieldValue("startTime")?.[0];
     // endTime1
-    let endTime1 = disabledTimeDates2?.[0];
+    const endTime1 = disabledTimeDates2?.[0];
     if (type === "start") {
       return transformFn.disabledTime(StartTime1, CurrentFormMoment);
     }
@@ -36,7 +36,7 @@ const Picker2 = () => {
     return {};
   };
   const disabledRangeDate = (CurrentFormMoment: moment.MomentInput) => {
-    let StartTime = form.getFieldValue("startTime")?.[0];
+    const StartTime = form.getFieldValue("startTime")?.[0];
     return transformFn.disabledDate(StartTime, CurrentFormMoment);
   };
   return (

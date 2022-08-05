@@ -49,7 +49,7 @@ const RcCard = (props: any) => {
   return (
     <>
       <Card title={cardTitle} extra={cardExtra}>
-        {renderContent(content)}
+        {renderContent()}
         <Divider orientation="left">{descriptionTitle ?? ""}</Divider>
         <div>{description ?? ""} </div>
         {/* 下方的按钮 */}

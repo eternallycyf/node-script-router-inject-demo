@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Card } from "antd";
 import { Filter } from "@/components/QueryForm";
 import searchList from "./constant";

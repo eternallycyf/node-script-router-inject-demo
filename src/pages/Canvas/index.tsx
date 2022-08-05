@@ -4,7 +4,10 @@ const CanvasComponent = (props: any) => {
     const myCanvas = document.querySelector("canvas") as any;
     const ctx = myCanvas.getContext("2d");
     /*1.构造函数*/
-    var LineChart = function (ctx) {
+    let LineChart = function (
+      this: any,
+      ctx: CanvasRenderingContext2D | null | undefined,
+    ) {
       /*获取绘图工具*/
       this.ctx = ctx || document.querySelector("canvas").getContext("2d");
       /*画布的大小*/
@@ -24,7 +27,7 @@ const CanvasComponent = (props: any) => {
       /*点的坐标 和数据有关系  数据可视化*/
     };
     /*2.行为方法*/
-    LineChart.prototype.init = function (data) {
+    LineChart.prototype.init = function (data: any) {
       this.drawGrid();
       this.drawAxis();
       this.drawDotted(data);
@@ -32,7 +35,7 @@ const CanvasComponent = (props: any) => {
     /*绘制网格*/
     LineChart.prototype.drawGrid = function () {
       /*x方向的线*/
-      var xLineTotal = Math.floor(this.canvasHeight / this.gridSize);
+      let xLineTotal = Math.floor(this.canvasHeight / this.gridSize);
       this.ctx.strokeStyle = "#eee";
       for (var i = 0; i <= xLineTotal; i++) {
         this.ctx.beginPath();
@@ -41,7 +44,7 @@ const CanvasComponent = (props: any) => {
         this.ctx.stroke();
       }
       /*y方向的线*/
-      var yLineTotal = Math.floor(this.canvasWidth / this.gridSize);
+      let yLineTotal = Math.floor(this.canvasWidth / this.gridSize);
       for (var i = 0; i <= yLineTotal; i++) {
         this.ctx.beginPath();
         this.ctx.moveTo(i * this.gridSize - 0.5, 0);
@@ -85,19 +88,19 @@ const CanvasComponent = (props: any) => {
       this.ctx.fill();
     };
     /*绘制所有点*/
-    LineChart.prototype.drawDotted = function (data) {
+    LineChart.prototype.drawDotted = function (data: any[]) {
       /*1.数据的坐标 需要转换 canvas坐标*/
       /*2.再进行点的绘制*/
       /*3.把线连起来*/
-      var that = this;
+      let that = this;
       /*记录当前坐标*/
-      var prevCanvasX = 0;
-      var prevCanvasY = 0;
-      data.forEach(function (item, i) {
+      let prevCanvasX = 0;
+      let prevCanvasY = 0;
+      data.forEach(function (item: { x: any; y: number }, i: number) {
         /* x = 原点的坐标 + 数据的坐标 */
         /* y = 原点的坐标 - 数据的坐标 */
-        var canvasX = that.x0 + item.x;
-        var canvasY = that.y0 - item.y;
+        let canvasX = that.x0 + item.x;
+        let canvasY = that.y0 - item.y;
         /*绘制点*/
         that.ctx.beginPath();
         that.ctx.moveTo(
@@ -139,7 +142,7 @@ const CanvasComponent = (props: any) => {
       });
     };
     /*3.初始化*/
-    var data = [
+    let data = [
       {
         x: 100,
         y: 120,
@@ -161,7 +164,7 @@ const CanvasComponent = (props: any) => {
         y: 80,
       },
     ];
-    var lineChart = new LineChart();
+    let lineChart = new LineChart();
     lineChart.init(data);
   }, []);
   return (

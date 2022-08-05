@@ -1,10 +1,10 @@
-import { Button, Card, Select, Spin } from "antd";
+import { Card, Select, Spin } from "antd";
 import { PageContainer } from "@ant-design/pro-layout";
 import { connect } from "umi";
-import { IMyConnectState, IMyProps } from "./interface";
+import type { IMyConnectState, IMyProps } from "./interface";
 import Charts from "./Components/charts";
 
-const My: React.FC = ({ dispatch, list, myLoading }: IMyProps) => {
+const My: React.FC = ({ list, myLoading }: IMyProps) => {
   console.log(myLoading, list);
 
   return (
@@ -36,6 +36,7 @@ const My: React.FC = ({ dispatch, list, myLoading }: IMyProps) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-shadow
 export default connect(({ My, loading }: IMyConnectState) => ({
   ...My,
   myLoading: loading.effects["My/fetch"],

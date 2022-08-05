@@ -1,6 +1,6 @@
 import React, { useImperativeHandle } from "react";
 
-const Children = (props) => {
+const Children = (props: { ModalRef: any }) => {
   const { ModalRef } = props;
 
   useImperativeHandle(ModalRef, () => ({
@@ -13,7 +13,7 @@ const Children = (props) => {
 };
 
 export default class Father extends React.Component {
-  ModalRef = React.createRef();
+  ModalRef: any = React.createRef();
   state = {};
   componentDidMount() {
     console.log(this.ModalRef.current.getData());

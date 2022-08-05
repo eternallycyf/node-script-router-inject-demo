@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Form,
   Row,
@@ -14,18 +14,17 @@ import {
   Cascader,
   TimePicker,
 } from "antd";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { UpOutlined } from "@ant-design/icons";
 import styles from "./index.less";
 const { RangePicker } = DatePicker;
 
 const { Option } = Select;
-const { TreeNode } = TreeSelect;
 
 interface FilterProps {
   filterList: any[];
   autoSearch?: boolean;
-  onSearch?: Function;
-  onReset?: Function;
+  onSearch?: (values: any) => void;
+  onReset?: () => void;
   [key: string]: any;
 }
 
@@ -53,7 +52,7 @@ export const Filter = ({
   useEffect(() => {
     setList(isMore ? list.slice(0, 2) : setKeystoLocaleLowerCase(filterList));
     setOffsetSpan(isMore ? 0 : 2 - (list.length % 3));
-  }, [isMore]);
+  }, [filterList, isMore, list]);
 
   const lisLen = useMemo(() => {
     return list.length;
@@ -63,14 +62,15 @@ export const Filter = ({
     return lisLen >= 5 ? 4 : (24 - 2.5) / lisLen;
   }, [lisLen]);
 
-  const onFinish = (values: { [key: string]: string | number | undefined }) => {
+  const onFinish = (values: Record<string, string | number | undefined>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     onSearch && onSearch(values);
   };
 
   const getFormElement = (formtype: string, oItem: any) => {
     /** onPressEnter会自动执行 */
     let item: any = {};
-    for (let key in oItem) {
+    for (const key in oItem) {
       if (oItem.hasOwnProperty(key)) {
         if (key !== "defaultvalue") {
           item[key] = oItem[key];
@@ -163,6 +163,7 @@ export const Filter = ({
           return (
             <Col
               span={formtype === "switch" ? 2.5 : span}
+              // eslint-disable-next-line react/no-array-index-key
               key={item.name + i}
               style={{
                 minWidth: formtype === "switch" ? "auto" : "200px",
@@ -203,6 +204,7 @@ export const Filter = ({
             style={{ margin: "0 8px" }}
             onClick={() => {
               form.resetFields();
+              // eslint-disable-next-line @typescript-eslint/no-unused-expressions
               onReset && onReset();
             }}
           >

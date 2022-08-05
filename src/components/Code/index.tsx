@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./index.less";
 /**
  * @param {string} type 样式类型

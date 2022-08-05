@@ -1,6 +1,5 @@
 import { PageLoading, ProBreadcrumb } from "@ant-design/pro-layout";
-import { history, useModel } from "umi";
-import { Link } from "umi";
+import React from "react";
 import { Inspector } from "react-dev-inspector"; // 快捷代码跳转模块
 // import { Outlet } from "umi";
 const InspectorWrapper =

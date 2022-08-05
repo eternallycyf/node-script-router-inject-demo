@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { Transfer, Checkbox, Modal } from "antd";
 import React, {
   useState,
@@ -9,16 +10,16 @@ import React, {
 import styles from "../index.less";
 import { Form, Select } from "antd";
 import type { FormInstance } from "antd/es/form";
-import { ModalProps } from "antd/es/modal";
-import { TransferProps } from "antd/es/transfer";
+import type { ModalProps } from "antd/es/modal";
+import type { TransferProps } from "antd/es/transfer";
 
 interface Iprops {
-  transferOkCallBack: Function;
-  originData: Array<any>;
+  transferOkCallBack: () => void;
+  originData: any[];
   formRef: FormInstance;
-  falseSelectItmeName: string;
-  modalProps: ModalProps;
-  transferProps: TransferProps<any>;
+  falseSelectItmeName?: string;
+  modalProps?: ModalProps;
+  transferProps?: TransferProps<any>;
   [props: string]: any;
 }
 
@@ -30,9 +31,9 @@ const flattenDeep: any = (arr: any) =>
 const filterRepeatList = (arr: any) => [...new Set([...arr])];
 // 找到改变项的全部信息
 const findAllMessage = (originArr: any, keyArr: any) => {
-  let arr: [] = [];
+  const arr: any[] = [];
   keyArr.forEach((item: any) => {
-    arr.push(originArr.filter((ele) => ele.key == item));
+    arr.push(originArr.filter((ele: any) => ele.key == item));
   });
   return flattenDeep(arr);
 };
@@ -64,7 +65,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
     formRef.setFieldsValue({
       [falseSelectItmeName]: [],
     });
-  }, [originData.length]);
+  }, [falseSelectItmeName, formRef, originData.length]);
 
   // 暴露给ref的接口
   useImperativeHandle(TransferRef, () => ({
@@ -80,7 +81,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
   }));
 
   const handleChange = (
-    newTargetKeys: Array<any>,
+    newTargetKeys: any[],
     direction: string,
     moveKeys: any,
   ) => {
@@ -94,8 +95,8 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
   };
 
   const handleSelectChange = (
-    sourceSelectedKeys: Array<any>,
-    targetSelectedKeys: Array<any>,
+    sourceSelectedKeys: any[],
+    targetSelectedKeys: any[],
   ) => {
     // 设置新的数据
     const selectedKeysArr = filterRepeatList([
@@ -125,6 +126,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
       [falseSelectItmeName]: findAllMessage(originData, targetKeys),
     });
     setVisible(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     transferOkCallBack && transferOkCallBack();
   };
 
@@ -156,14 +158,13 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
                 visibility: "hidden",
               }}
               showSearch
-              dataSource={originData}
               titles={[
                 <Checkbox
                   checked={false}
                   onClick={() =>
                     setTargetKeys(originData.map((item: any) => item.key))
                   }
-                ></Checkbox>,
+                />,
                 <a
                   href="#"
                   onClick={() => {
@@ -189,6 +190,7 @@ const TransferForm = (props: Iprops, TransferRef: any) => {
               render={(item) => item.title as string}
               oneWay
               {...transferProps}
+              dataSource={originData}
             />
           </Modal>
         </div>

@@ -2,13 +2,13 @@ const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
 const ejs = require("ejs");
-type IBusinessList = Array<{ name: string; path: string }>;
+type IBusinessList = { name: string; path: string }[];
 function getAllBiz(source: string): IBusinessList {
   if (!fs.existsSync(source)) {
     console.log(chalk.yellow(`目录不存在${source}`));
     return [];
   }
-  const folders: Array<string> = fs.readdirSync(source);
+  const folders: string[] = fs.readdirSync(source);
   const bizList: IBusinessList = [];
   folders.forEach((item) => {
     const itemPath = path.resolve(__dirname, `../src/pages/${item}/`);

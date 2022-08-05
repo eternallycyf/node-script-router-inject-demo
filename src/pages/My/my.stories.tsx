@@ -1,4 +1,5 @@
-import React, { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from "react";
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from "react";
+import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Charts from "./Components/charts";
