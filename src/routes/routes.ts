@@ -5,6 +5,7 @@ import FormLayout from "../pages/FormLayout/routes";
 import Markdown from "../pages/Markdown/routes";
 import MuitipleRef from "../pages/MuitipleRef/routes";
 import My from "../pages/My/routes";
+import PdfPage from "../pages/PdfPage/routes";
 import QueryForm from "../pages/QueryForm/routes";
 import RefDemo from "../pages/RefDemo/routes";
 import TransferDemo from "../pages/TransferDemo/routes";
@@ -16,6 +17,7 @@ export default [
   Markdown,
   MuitipleRef,
   My,
+  PdfPage,
   QueryForm,
   RefDemo,
   TransferDemo,
