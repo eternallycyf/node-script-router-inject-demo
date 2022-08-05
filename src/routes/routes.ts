@@ -1,6 +1,7 @@
 //本文件是自动生成，请勿修改
 import Access from "../pages/Access/routes";
 import AntdTime from "../pages/AntdTime/routes";
+import Canvas from "../pages/Canvas/routes";
 import FormLayout from "../pages/FormLayout/routes";
 import Markdown from "../pages/Markdown/routes";
 import MuitipleRef from "../pages/MuitipleRef/routes";
@@ -9,10 +10,12 @@ import PdfPage from "../pages/PdfPage/routes";
 import QueryForm from "../pages/QueryForm/routes";
 import RefDemo from "../pages/RefDemo/routes";
 import TransferDemo from "../pages/TransferDemo/routes";
+import WordPage from "../pages/WordPage/routes";
 
 export default [
   Access,
   AntdTime,
+  Canvas,
   FormLayout,
   Markdown,
   MuitipleRef,
@@ -21,4 +24,5 @@ export default [
   QueryForm,
   RefDemo,
   TransferDemo,
+  WordPage,
 ];

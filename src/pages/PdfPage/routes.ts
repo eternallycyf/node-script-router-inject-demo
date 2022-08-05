@@ -1,5 +1,5 @@
 export default {
-  name: "导入导出pdf",
+  name: "pdf预览",
   path: "/pdf",
   component: "@/pages/PdfPage",
 };
