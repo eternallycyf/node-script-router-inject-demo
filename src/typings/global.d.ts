@@ -8,6 +8,7 @@ declare module "*.bmp";
 declare module "*.tiff";
 declare module "*.xlsx";
 declare module "*.less";
+declare module "*";
 
 export interface IGlobalModelState {
   theme: "dark" | "light";

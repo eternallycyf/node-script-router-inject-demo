@@ -33,6 +33,7 @@
     "classnames": "^2.3.1",
     "react": "18.x",
     "react-dom": "18.x",
+    "react-excel-renderer": "^1.1.0",
     "react-file-viewer": "^1.2.1",
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0",

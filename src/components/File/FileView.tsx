@@ -1,8 +1,9 @@
 import type { CSSProperties } from "react";
 import { PureComponent } from "react";
-import style from "./pdfView.less";
+import style from "./fileView.less";
 import cx from "classnames";
 import { Skeleton } from "antd";
+import FileViewer from "react-file-viewer";
 
 interface IProps {
   styles?: CSSProperties;
@@ -11,7 +12,7 @@ interface IProps {
   [onherProps: string]: any;
 }
 
-class PDFView extends PureComponent<IProps, any> {
+class FileView extends PureComponent<IProps, any> {
   constructor(props: IProps | Readonly<IProps>) {
     super(props);
     this.state = {
@@ -66,19 +67,38 @@ class PDFView extends PureComponent<IProps, any> {
   };
 
   render() {
-    const { styles, className } = this.props;
+    const { styles, className, fileType } = this.props;
     const { loading, pdfSrc } = this.state;
     const src = `${pdfSrc}`;
-    return loading ? (
-      <Skeleton loading paragraph={{ rows: 10 }} active />
-    ) : (
-      <iframe
+
+    console.log(fileType);
+    console.log(src);
+
+    if (loading) {
+      return <Skeleton loading paragraph={{ rows: 10 }} active />;
+    }
+
+    if (fileType == "pdf" || fileType == "png" || fileType == "jpg") {
+      return (
+        <iframe
+          className={cx(style.iframeStyle, className)}
+          style={styles}
+          src={src}
+          title="pdf预览"
+        />
+      );
+    }
+
+    return (
+      <FileViewer
+        title="预览"
         className={cx(style.iframeStyle, className)}
         style={styles}
-        src={src}
-        title="pdf预览"
+        fileType={"docx"}
+        filePath={src}
+        unsupportedComponent={"不支持"}
       />
     );
   }
 }
-export default PDFView;
+export default FileView;

@@ -15,3 +15,7 @@ const Router = [
 ];
 
 export default Router;
+
+// 递归获取树形路由
+// function getRoutes(routes: any) {
+//   return routes.reduce((arr: any, route: any) => {

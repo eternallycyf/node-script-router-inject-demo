@@ -1,4 +1,4 @@
-import PDFPreview from "@/components/PDF/PDFPreview";
+import FilePreView from "@/components/File/FilePreView";
 import { useRef } from "react";
 import { Upload, Form, Button } from "antd";
 
@@ -8,12 +8,12 @@ const normFile = (e: any) => {
 };
 
 const getBase64 = (
-  img: Blob,
+  file: Blob,
   cb: (result: string | ArrayBuffer | null) => void,
 ) => {
   const reader = new FileReader();
   reader.addEventListener("load", () => cb(reader.result));
-  reader.readAsDataURL(img);
+  reader.readAsDataURL(file);
 };
 
 const PdfPage = () => {
@@ -22,9 +22,10 @@ const PdfPage = () => {
 
   const handlePreviewPdf = ({ originFileObj }: any) => {
     // 1.base64方式预览
-    getBase64(originFileObj, (imgUrl: string | ArrayBuffer | null) => {
+    getBase64(originFileObj, (fileURL: string | ArrayBuffer | null) => {
       pdfRef.current.controlIsShow({
-        base64: imgUrl,
+        base64: fileURL,
+        originFileObj,
       });
     });
     // 2.src方式预览 通过后端接口获取src路径
@@ -43,14 +44,14 @@ const PdfPage = () => {
             beforeUpload={() => {
               return false;
             }}
-            name="avatar"
-            maxCount={1}
+            name="file"
+            maxCount={10}
           >
-            <Button>上传pdf</Button>
+            <Button>上传word excel pdf 图片等格式</Button>
           </Upload>
         </Form.Item>
       </Form>
-      <PDFPreview ref={pdfRef} />
+      <FilePreView ref={pdfRef} />
     </>
   );
 };

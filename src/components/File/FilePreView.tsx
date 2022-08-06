@@ -1,32 +1,44 @@
 import React, { PureComponent } from "react";
-import { Modal } from "antd";
-import PDFView from "./PDFView";
+import { Modal, message } from "antd";
+import FileView from "./FileView";
 
-class PDFPreview extends PureComponent<any, any> {
+class FilePreView extends PureComponent<any, any> {
   protected pdfViewRef: React.RefObject<any> = React.createRef();
   constructor(props: any) {
     super(props);
     this.state = {
       modalVisible: false,
+      fileType: "",
     };
   }
   //显隐状态的改变
-  controlIsShow = (params: { src?: string; base64?: string }) => {
+  controlIsShow = (params: {
+    src?: string;
+    base64?: string;
+    originFileObj?: any;
+  }) => {
     const { modalVisible } = this.state;
-    const { src, base64 } = params;
+    const { src, base64, originFileObj } = params;
+    const { name } = originFileObj;
+    const fileType = name.slice(name.lastIndexOf(".") + 1).toLowerCase();
+    const fileAllTypes = ["docx", "xlsx", "png", "jpg", "pdf"];
+    if (!fileAllTypes.includes(fileType)) {
+      return message.error("该文件不支持预览");
+    }
     this.setState({
       modalVisible: !modalVisible,
       src,
       base64,
+      fileType,
     });
   };
 
   render() {
-    const { modalVisible, src, base64 } = this.state;
+    const { modalVisible, src, base64, fileType } = this.state;
     return (
       <Modal
         visible={modalVisible}
-        title="PDF预览"
+        title={fileType + " 预览"}
         onCancel={() => {
           this.setState({
             modalVisible: false,
@@ -36,10 +48,11 @@ class PDFPreview extends PureComponent<any, any> {
         footer={null}
         destroyOnClose={true}
       >
-        <PDFView
+        <FileView
           ref={this.pdfViewRef}
           src={src}
           base64={base64}
+          fileType={fileType}
           styles={{
             height: "600px",
           }}
@@ -48,4 +61,4 @@ class PDFPreview extends PureComponent<any, any> {
     );
   }
 }
-export default PDFPreview;
+export default FilePreView;
