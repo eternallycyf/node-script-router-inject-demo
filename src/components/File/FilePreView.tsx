@@ -2,7 +2,22 @@ import React, { PureComponent } from "react";
 import { Modal, message } from "antd";
 import FileView from "./FileView";
 import { ExcelRenderer } from "react-excel-renderer";
-
+const txtFileTypes = [
+  "txt",
+  "json",
+  "js",
+  "css",
+  "java",
+  "py",
+  "html",
+  "jsx",
+  "ts",
+  "tsx",
+  "xml",
+  "md",
+  "log",
+];
+const fileAllTypes = ["docx", "xlsx", "png", "jpg", "pdf", ...txtFileTypes];
 class FilePreView extends PureComponent<any, any> {
   protected pdfViewRef: React.RefObject<any> = React.createRef();
   constructor(props: any) {
@@ -26,7 +41,7 @@ class FilePreView extends PureComponent<any, any> {
     const { src, base64, originFileObj } = params;
     const { name } = originFileObj;
     const fileType = name.slice(name.lastIndexOf(".") + 1).toLowerCase();
-    const fileAllTypes = ["docx", "xlsx", "png", "jpg", "pdf"];
+
     if (!fileAllTypes.includes(fileType)) {
       return message.error("该文件不支持预览");
     }
@@ -64,16 +79,19 @@ class FilePreView extends PureComponent<any, any> {
         footer={null}
         destroyOnClose={true}
       >
-        <FileView
-          ref={this.pdfViewRef}
-          src={src}
-          base64={base64}
-          fileType={fileType}
-          excelData={excelData}
-          styles={{
-            height: "600px",
-          }}
-        />
+        <div id="file-preview-modal">
+          <FileView
+            ref={this.pdfViewRef}
+            src={src}
+            base64={base64}
+            fileType={fileType}
+            excelData={excelData}
+            txtFileTypes={txtFileTypes}
+            styles={{
+              height: "600px",
+            }}
+          />
+        </div>
       </Modal>
     );
   }

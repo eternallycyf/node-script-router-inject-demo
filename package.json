@@ -31,6 +31,13 @@
     "@ant-design/pro-layout": "^6.5.0",
     "@types/storybook__addon-info": "^5.2.4",
     "classnames": "^2.3.1",
+    "docx-preview": "^0.1.11",
+    "docxtemplater": "3.5",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "jszip-utils": "^0.1.0",
+    "open-docxtemplater-image-module": "^1.0.3",
+    "pizzip": "^3.1.1",
     "react": "18.x",
     "react-dom": "18.x",
     "react-excel-renderer": "^1.1.0",
@@ -39,12 +46,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
     "umi": "^3.5.28",
-    "umi-plugin-panel-tabs": "0.0.28",
-    "docxtemplater": "3.5",
-    "pizzip": "^3.1.1",
-    "jszip-utils": "^0.1.0",
-    "file-saver": "^2.0.5",
-    "open-docxtemplater-image-module": "^1.0.3"
+    "umi-plugin-panel-tabs": "0.0.28"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
