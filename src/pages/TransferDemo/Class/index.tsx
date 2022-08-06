@@ -2,6 +2,9 @@ import { TransferClassForm } from "@/components/TransferForm";
 import React from "react";
 import { Form, Button } from "antd";
 import type { FormInstance } from "antd/es/form";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
+
 export default class TransferDemo extends React.Component {
   TransferRef: any = React.createRef();
   formRef: any = React.createRef<FormInstance>();
@@ -45,31 +48,35 @@ export default class TransferDemo extends React.Component {
   render() {
     return (
       <>
-        <h1>
-          <button
-            onClick={() => {
-              this.TransferRef.current.useVisible(true);
-            }}
-          >
-            打开穿梭框
-          </button>
-        </h1>
-        <h1>
-          <button onClick={() => this.testData()}>设置新的数据源</button>
-        </h1>
-        <Form ref={this.formRef} onFinish={this.onFinish}>
-          <Form.Item style={{ display: "inline-block" }}>
-            <TransferClassForm
-              formRef={this.formRef}
-              originData={this.state.mockData}
-              TransferRef={this.TransferRef}
-              transferOkCallBack={() => this.transferOkCallBack()}
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form>
+        <PageContainer>
+          <Card style={{ margin: 24 }}>
+            <h1>
+              <button
+                onClick={() => {
+                  this.TransferRef.current.useVisible(true);
+                }}
+              >
+                打开穿梭框
+              </button>
+            </h1>
+            <h1>
+              <button onClick={() => this.testData()}>设置新的数据源</button>
+            </h1>
+            <Form ref={this.formRef} onFinish={this.onFinish}>
+              <Form.Item style={{ display: "inline-block" }}>
+                <TransferClassForm
+                  formRef={this.formRef}
+                  originData={this.state.mockData}
+                  TransferRef={this.TransferRef}
+                  transferOkCallBack={() => this.transferOkCallBack()}
+                />
+              </Form.Item>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form>
+          </Card>
+        </PageContainer>
       </>
     );
   }

@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
+
 const CanvasComponent = (props: any) => {
   useEffect(() => {
     const myCanvas = document.querySelector("canvas") as any;
@@ -169,7 +172,11 @@ const CanvasComponent = (props: any) => {
   }, []);
   return (
     <>
-      <canvas width="1000" height="800" />
+      <PageContainer>
+        <Card style={{ margin: 24 }}>
+          <canvas width="1000" height="800" />
+        </Card>
+      </PageContainer>
     </>
   );
 };

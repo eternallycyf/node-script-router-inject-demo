@@ -1,4 +1,6 @@
 import React, { useImperativeHandle } from "react";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
 
 const Children = (props: { ModalRef: any }) => {
   const { ModalRef } = props;
@@ -22,7 +24,11 @@ export default class Father extends React.Component {
   render() {
     return (
       <>
-        <Children ModalRef={this.ModalRef} />
+        <PageContainer>
+          <Card style={{ margin: 24 }}>
+            <Children ModalRef={this.ModalRef} />
+          </Card>
+        </PageContainer>
       </>
     );
   }

@@ -1,6 +1,8 @@
 import { TransferHookForm } from "@/components/TransferForm";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button } from "antd";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
 
 const TransferDemo = () => {
   // const TransferRef = useRef(null)
@@ -51,31 +53,35 @@ const TransferDemo = () => {
 
   return (
     <>
-      <h1>
-        <button
-          onClick={() => {
-            TransferRef.current.useVisible(true);
-          }}
-        >
-          打开穿梭框
-        </button>
-      </h1>
-      <h1>
-        <button onClick={() => testData()}>设置新的测试数据</button>
-      </h1>
-      <Form form={form} onFinish={onFinish}>
-        <Form.Item style={{ display: "inline-block" }}>
-          <TransferHookForm
-            formRef={form}
-            originData={mockData}
-            ref={TransferRef}
-            transferOkCallBack={() => transferOkCallBack()}
-          />
-        </Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form>
+      <PageContainer>
+        <Card style={{ margin: 24 }}>
+          <h1>
+            <button
+              onClick={() => {
+                TransferRef.current.useVisible(true);
+              }}
+            >
+              打开穿梭框
+            </button>
+          </h1>
+          <h1>
+            <button onClick={() => testData()}>设置新的测试数据</button>
+          </h1>
+          <Form form={form} onFinish={onFinish}>
+            <Form.Item style={{ display: "inline-block" }}>
+              <TransferHookForm
+                formRef={form}
+                originData={mockData}
+                ref={TransferRef}
+                transferOkCallBack={() => transferOkCallBack()}
+              />
+            </Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form>
+        </Card>
+      </PageContainer>
     </>
   );
 };

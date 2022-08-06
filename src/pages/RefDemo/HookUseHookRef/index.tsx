@@ -4,6 +4,8 @@ import React, {
   useEffect,
   forwardRef,
 } from "react";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
 
 const Child = (props: any, ModalRef: any) => {
   useImperativeHandle(ModalRef, () => ({
@@ -30,7 +32,11 @@ const Father = () => {
 
   return (
     <>
-      <Children ref={ModalRef} />
+      <PageContainer>
+        <Card style={{ margin: 24 }}>
+          <Children ref={ModalRef} />
+        </Card>
+      </PageContainer>
     </>
   );
 };

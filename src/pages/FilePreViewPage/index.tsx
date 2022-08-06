@@ -1,6 +1,7 @@
 import FilePreView from "@/components/File/FilePreView";
 import { useRef } from "react";
-import { Upload, Form, Button } from "antd";
+import { Upload, Form, Button, Card } from "antd";
+import { PageContainer } from "@ant-design/pro-layout";
 
 const normFile = (e: any) => {
   if (Array.isArray(e)) return e;
@@ -36,22 +37,26 @@ const PdfPage = () => {
 
   return (
     <>
-      <Form form={form}>
-        <h1>点击文件名即可预览</h1>
-        <Form.Item valuePropName="fileList" getValueFromEvent={normFile}>
-          <Upload
-            onPreview={(file) => handlePreviewPdf(file)}
-            beforeUpload={() => {
-              return false;
-            }}
-            name="file"
-            maxCount={10}
-          >
-            <Button>上传word excel pdf 图片等格式</Button>
-          </Upload>
-        </Form.Item>
-      </Form>
-      <FilePreView ref={pdfRef} />
+      <PageContainer>
+        <Card style={{ margin: 24 }}>
+          <Form form={form}>
+            <h1>点击文件名即可预览</h1>
+            <Form.Item valuePropName="fileList" getValueFromEvent={normFile}>
+              <Upload
+                onPreview={(file) => handlePreviewPdf(file)}
+                beforeUpload={() => {
+                  return false;
+                }}
+                name="file"
+                maxCount={10}
+              >
+                <Button>上传word excel pdf 图片等格式</Button>
+              </Upload>
+            </Form.Item>
+          </Form>
+          <FilePreView ref={pdfRef} />
+        </Card>
+      </PageContainer>
     </>
   );
 };

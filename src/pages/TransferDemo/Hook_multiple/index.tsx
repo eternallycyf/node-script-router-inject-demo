@@ -1,6 +1,8 @@
 import { TransferHookForm } from "@/components/TransferForm";
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button } from "antd";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Card } from "antd";
 
 const TransferDemo = () => {
   // const TransferRef = useRef(null)
@@ -42,50 +44,54 @@ const TransferDemo = () => {
 
   return (
     <>
-      <h1>
-        <button
-          onClick={() => {
-            TransferRef.current[0].useVisible(true);
-          }}
-        >
-          打开穿梭框1
-        </button>
-      </h1>
-      <h1>
-        <button
-          onClick={() => {
-            TransferRef.current[1].useVisible(true);
-          }}
-        >
-          打开穿梭框2
-        </button>
-      </h1>
-      <h1>
-        <button onClick={() => testData()}>两个都设置新的测试数据</button>
-      </h1>
-      <h1>可遍历生成无限个</h1>
-      <Form form={form} onFinish={onFinish}>
-        <Form.Item style={{ display: "inline-block" }}>
-          <TransferHookForm
-            formRef={form}
-            originData={mockData}
-            ref={(el) => (TransferRef.current[0] = el)}
-            transferOkCallBack={() => transferOkCallBack()}
-          />
-        </Form.Item>
-        <Form.Item style={{ display: "inline-block" }}>
-          <TransferHookForm
-            formRef={form}
-            originData={mockData}
-            ref={(el) => (TransferRef.current[1] = el)}
-            transferOkCallBack={() => transferOkCallBack()}
-            falseSelectItmeName="asasd"
-          />
-        </Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form>
+      <PageContainer>
+        <Card style={{ margin: 24 }}>
+          <h1>
+            <button
+              onClick={() => {
+                TransferRef.current[0].useVisible(true);
+              }}
+            >
+              打开穿梭框1
+            </button>
+          </h1>
+          <h1>
+            <button
+              onClick={() => {
+                TransferRef.current[1].useVisible(true);
+              }}
+            >
+              打开穿梭框2
+            </button>
+          </h1>
+          <h1>
+            <button onClick={() => testData()}>两个都设置新的测试数据</button>
+          </h1>
+          <h1>可遍历生成无限个</h1>
+          <Form form={form} onFinish={onFinish}>
+            <Form.Item style={{ display: "inline-block" }}>
+              <TransferHookForm
+                formRef={form}
+                originData={mockData}
+                ref={(el) => (TransferRef.current[0] = el)}
+                transferOkCallBack={() => transferOkCallBack()}
+              />
+            </Form.Item>
+            <Form.Item style={{ display: "inline-block" }}>
+              <TransferHookForm
+                formRef={form}
+                originData={mockData}
+                ref={(el) => (TransferRef.current[1] = el)}
+                transferOkCallBack={() => transferOkCallBack()}
+                falseSelectItmeName="asasd"
+              />
+            </Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form>
+        </Card>
+      </PageContainer>
     </>
   );
 };

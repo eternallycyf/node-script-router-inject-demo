@@ -13,7 +13,7 @@ const My: React.FC = ({ list, myLoading }: IMyProps) => {
         <Spin spinning={myLoading}>
           <Card
             title="我的"
-            style={{ margin: 24, height: "81vh" }}
+            style={{ margin: 24 }}
             extra={<Select options={list} style={{ width: 200 }} />}
           >
             <div>.</div>

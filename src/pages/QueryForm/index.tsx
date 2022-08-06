@@ -11,7 +11,7 @@ const Queryform: FC<any> = () => {
 
   return (
     <PageContainer>
-      <Card title="我的" style={{ margin: 24, height: "81vh" }}>
+      <Card title="我的" style={{ margin: 24 }}>
         <Filter
           filterList={searchList}
           onSearch={(values: any) => onSearch(values)}
