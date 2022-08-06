@@ -4,6 +4,7 @@ import style from "./fileView.less";
 import cx from "classnames";
 import { Skeleton } from "antd";
 import FileViewer from "react-file-viewer";
+import { OutTable } from "react-excel-renderer";
 
 interface IProps {
   styles?: CSSProperties;
@@ -67,15 +68,23 @@ class FileView extends PureComponent<IProps, any> {
   };
 
   render() {
-    const { styles, className, fileType } = this.props;
+    const { styles, className, fileType, excelData } = this.props;
     const { loading, pdfSrc } = this.state;
     const src = `${pdfSrc}`;
 
-    console.log(fileType);
-    console.log(src);
-
     if (loading) {
       return <Skeleton loading paragraph={{ rows: 10 }} active />;
+    }
+
+    if (fileType == "xlsx") {
+      return (
+        <OutTable
+          data={excelData.rows}
+          columns={excelData.cols}
+          tableClassName={style.ExcelTable2007}
+          tableHeaderRowClass={style.heading}
+        />
+      );
     }
 
     if (fileType == "pdf" || fileType == "png" || fileType == "jpg") {
@@ -94,7 +103,7 @@ class FileView extends PureComponent<IProps, any> {
         title="预览"
         className={cx(style.iframeStyle, className)}
         style={styles}
-        fileType={"docx"}
+        fileType={fileType}
         filePath={src}
         unsupportedComponent={"不支持"}
       />

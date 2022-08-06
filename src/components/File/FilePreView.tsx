@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Modal, message } from "antd";
 import FileView from "./FileView";
+import { ExcelRenderer } from "react-excel-renderer";
 
 class FilePreView extends PureComponent<any, any> {
   protected pdfViewRef: React.RefObject<any> = React.createRef();
@@ -9,6 +10,10 @@ class FilePreView extends PureComponent<any, any> {
     this.state = {
       modalVisible: false,
       fileType: "",
+      excelData: {
+        cols: [],
+        rows: [],
+      },
     };
   }
   //显隐状态的改变
@@ -25,6 +30,16 @@ class FilePreView extends PureComponent<any, any> {
     if (!fileAllTypes.includes(fileType)) {
       return message.error("该文件不支持预览");
     }
+    if (fileType == "xlsx") {
+      ExcelRenderer(originFileObj, (err: Error, resp: any) => {
+        this.setState({
+          excelData: {
+            cols: resp.cols,
+            rows: resp.rows,
+          },
+        });
+      });
+    }
     this.setState({
       modalVisible: !modalVisible,
       src,
@@ -34,7 +49,7 @@ class FilePreView extends PureComponent<any, any> {
   };
 
   render() {
-    const { modalVisible, src, base64, fileType } = this.state;
+    const { modalVisible, src, base64, fileType, excelData } = this.state;
     return (
       <Modal
         visible={modalVisible}
@@ -45,6 +60,7 @@ class FilePreView extends PureComponent<any, any> {
           });
         }}
         width={1200}
+        bodyStyle={{ overflow: "scroll", height: "70vh" }}
         footer={null}
         destroyOnClose={true}
       >
@@ -53,6 +69,7 @@ class FilePreView extends PureComponent<any, any> {
           src={src}
           base64={base64}
           fileType={fileType}
+          excelData={excelData}
           styles={{
             height: "600px",
           }}
