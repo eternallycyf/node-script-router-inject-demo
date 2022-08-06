@@ -8,6 +8,8 @@ declare module "*.bmp";
 declare module "*.tiff";
 declare module "*.xlsx";
 declare module "*.less";
+declare module "howtools";
+declare module "leaflet";
 
 export interface IGlobalModelState {
   theme: "dark" | "light";

@@ -16,6 +16,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: "none",
   },
+  mock: false,
   hash: true,
   dynamicImport: {},
   layout: {
