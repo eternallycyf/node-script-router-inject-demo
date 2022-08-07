@@ -31,6 +31,8 @@
     "classnames": "^2.3.1",
     "docx-preview": "^0.1.11",
     "docxtemplater": "3.5",
+    "echarts": "^5.3.3",
+    "echarts-for-react": "^3.0.2",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
@@ -48,7 +50,6 @@
     "umi-plugin-panel-tabs": "0.0.28"
   },
   "devDependencies": {
-    "css-minimizer-webpack-plugin": "^4.0.0",
     "@babel/core": "^7.18.9",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",

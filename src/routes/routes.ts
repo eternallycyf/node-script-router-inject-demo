@@ -2,6 +2,7 @@
 import Access from "../pages/Access/routes";
 import AntdTime from "../pages/AntdTime/routes";
 import Canvas from "../pages/Canvas/routes";
+import EchartsReact from "../pages/EchartsReact/routes";
 import FileExportExcel from "../pages/FileExportExcel/routes";
 import FileExportWord from "../pages/FileExportWord/routes";
 import FilePreViewPage from "../pages/FilePreViewPage/routes";
@@ -17,6 +18,7 @@ export default [
   Access,
   AntdTime,
   Canvas,
+  EchartsReact,
   FileExportExcel,
   FileExportWord,
   FilePreViewPage,
