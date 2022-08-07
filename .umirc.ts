@@ -3,7 +3,6 @@ import routerConfig from "./src/routes";
 const proxyConfig = require("./src/config/proxyConfig");
 const docgenLoader = require("react-docgen-typescript-loader");
 const path = require("path");
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 export default defineConfig({
   define: {
@@ -45,12 +44,4 @@ export default defineConfig({
   //   tabsTagColor: "#1890ff",
   // },
   plugins: ["react-dev-inspector/plugins/umi/react-inspector"],
-  chainWebpack: function (config, { webpack }) {
-    config.merge({
-      optimization: {
-        minimize: true,
-        minimizer: [new CssMinimizerPlugin()],
-      },
-    });
-  },
 });
