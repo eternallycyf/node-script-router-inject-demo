@@ -21,7 +21,7 @@ export const dataSource = [
   },
   {
     key: "6",
-    type: "text",
+    type: "txt",
   },
   {
     key: "7",

@@ -73,11 +73,7 @@ const RcCard = (props: any) => {
               padding: "0px 0px",
             }}
           >
-            <SyntaxHighlighter
-              showLineNumbers
-              language="javascript"
-              style={atomDark}
-            >
+            <SyntaxHighlighter showLineNumbers language="tsx" style={atomDark}>
               {`${code.toString()}`}
             </SyntaxHighlighter>
           </Card>
