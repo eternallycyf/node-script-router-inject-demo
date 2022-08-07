@@ -284,3 +284,84 @@ cd -
 ## 代码定位
 
 在浏览器中使用ctrl+y 就可选择需要跳转的代码模块 单击就可跳转相应代码
+
+
+## docker-compose部署到服务器
+```js
+## 服务器部署
+# 1.使用sftp将除了node_modules的文件放在服务器 例如 ./home/blog
+scp -r node-script-router-inject-demo root@118.31.34.158:/home/blog/
+
+# 2
+# 2.1 在 ./home/blog 根目录运行
+ssh 'root@118.31.34.158'  
+cd /home/blog/node-script-router-inject-demo
+docker-compose up -d
+# 2.2 停止命令 
+docker-compose down 
+```
+
+```Dockerfile
+FROM node:12.20.0-alpine as builder
+
+WORKDIR /usr/src/app/
+USER root
+COPY package.json ./
+RUN yarn
+
+COPY ./ ./
+RUN npm run build:pro
+
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html/
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=builder /usr/src/app/dist/ /usr/share/nginx/html/
+
+EXPOSE 80
+
+CMD ['nginx', '-g', 'daemon off;']
+```
+
+```conf 
+server {
+    listen       80;
+    server_name  127.0.0.1;
+
+    access_log off;
+
+    add_header X-Frame-Options sameorigin always;
+
+    location / {
+        root /app;
+        try_files $uri $uri/ /index.html;
+        index index.html index.htm;
+    }
+}
+```
+
+```yml
+version: "3.5"
+
+services:
+  ant-design-pro_build:
+    build: ./
+    container_name: "ant-design-pro_build"
+    volumes:
+      - dist:/usr/src/app/dist
+
+  ant-design-pro_web:
+    image: nginx
+    ports:
+      - 80:80
+    container_name: "ant-design-pro_web"
+    restart: unless-stopped
+    volumes:
+      - dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+volumes:
+  dist:
+```
