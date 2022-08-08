@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Divider, Empty } from "antd";
 import { CopyOutlined } from "@ant-design/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./index.less";
 /**
  * @param {string} cardTitle card组件的左上角
@@ -20,6 +20,7 @@ const RcCard = (props: any) => {
     code = "",
     cardTitle = "",
     cardExtra = "",
+    ...restProps
   } = props;
   const [state, setState] = useState(false);
 
@@ -33,7 +34,7 @@ const RcCard = (props: any) => {
           <SyntaxHighlighter
             showLineNumbers
             language="javascript"
-            style={atomDark}
+            style={dracula}
           >
             {content.toString()}
           </SyntaxHighlighter>
@@ -48,7 +49,12 @@ const RcCard = (props: any) => {
 
   return (
     <>
-      <Card title={cardTitle} extra={cardExtra}>
+      <Card
+        title={cardTitle}
+        extra={cardExtra}
+        style={{ margin: 20 }}
+        {...restProps}
+      >
         {renderContent()}
         <Divider orientation="left">{descriptionTitle ?? ""}</Divider>
         <div>{description ?? ""} </div>
@@ -73,9 +79,11 @@ const RcCard = (props: any) => {
               padding: "0px 0px",
             }}
           >
-            <SyntaxHighlighter showLineNumbers language="tsx" style={atomDark}>
-              {`${code.toString()}`}
-            </SyntaxHighlighter>
+            {code != null && (
+              <SyntaxHighlighter showLineNumbers language="tsx" style={dracula}>
+                {`${code.toString()}`}
+              </SyntaxHighlighter>
+            )}
           </Card>
         }
       </Card>
