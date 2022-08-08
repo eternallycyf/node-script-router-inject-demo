@@ -52,10 +52,10 @@ const RcCard = (props: any) => {
       <Card
         title={cardTitle}
         extra={cardExtra}
-        style={{ margin: 20 }}
+        style={{ margin: 20, overflow: "hidden" }}
         {...restProps}
       >
-        {renderContent()}
+        <div id={"rccard-header"}> {renderContent()}</div>
         <Divider orientation="left">{descriptionTitle ?? ""}</Divider>
         <div>{description ?? ""} </div>
         {/* 下方的按钮 */}
