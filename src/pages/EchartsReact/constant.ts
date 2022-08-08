@@ -1,8 +1,8 @@
+export const markDownText = `
 import { useRef, useEffect } from "react";
 import { PageContainer } from "@ant-design/pro-layout";
 import ReactEChart from "@/components/REcharts";
 import RcCard from "@/components/RcCard";
-import { markDownText, EchartsCom } from "./constant";
 
 const option = {
   tooltip: {
@@ -154,30 +154,33 @@ const EchartsReact = () => {
   return (
     <>
       <PageContainer>
-        <RcCard
-          content={<h1>1.封装的组件</h1>}
-          code={EchartsCom}
-          descriptionTitle={"echarts for react"}
-          description={null}
-        />
-        <RcCard
-          content={
-            <>
-              <h1>2.demo</h1>
-              <ReactEChart
-                ref={echartsRef}
-                option={option}
-                onEvents={onEvents}
-              />
-            </>
-          }
-          code={markDownText}
-          descriptionTitle={"echarts for react"}
-          description={"直接传入options即可"}
-        />
+        <ReactEChart ref={echartsRef} option={option} onEvents={onEvents} />
       </PageContainer>
     </>
   );
 };
 
 export default EchartsReact;
+
+`;
+
+export const EchartsCom = `
+import { useRef, useImperativeHandle, forwardRef } from "react";
+import type { EChartsReactProps } from "echarts-for-react/lib/types";
+import ReactECharts from "echarts-for-react";
+
+const ReactEChart = (props: EChartsReactProps, echartsRef: any) => {
+  const ref = useRef<any>(null!);
+  useImperativeHandle(echartsRef, () => ({
+    ref: ref.current.getEchartsInstance(),
+  }));
+
+  return (
+    <div ref={echartsRef}>
+      <ReactECharts ref={ref} {...props} />
+    </div>
+  );
+};
+
+export default forwardRef(ReactEChart);
+`;
