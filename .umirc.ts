@@ -8,11 +8,11 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
-  history: { type: "hash" },
-  publicPath:
-    process.env.APP_ENV === "development"
-      ? "/"
-      : "http://wangxince.site/node-script-router-inject-demo/",
+  base: "/",
+  // publicPath:
+  //   process.env.APP_ENV === "development"
+  //     ? "/"
+  //     : "http://wangxince.site/node-script-router-inject-demo/",
   nodeModulesTransform: {
     type: "none",
   },

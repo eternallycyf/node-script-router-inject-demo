@@ -301,13 +301,15 @@ docker-compose up -d
 docker-compose down 
 ```
 
+- ./Dockerfile
 ```Dockerfile
-FROM node:12.20.0-alpine as builder
+FROM node:14-alpine3.15 as builder
 
 WORKDIR /usr/src/app/
 USER root
 COPY package.json ./
-RUN yarn
+RUN yarn config set registry https://registry.npmmirror.com/
+RUN yarn 
 
 COPY ./ ./
 RUN npm run build:pro
@@ -325,7 +327,8 @@ EXPOSE 80
 CMD ['nginx', '-g', 'daemon off;']
 ```
 
-```conf 
+- ./nginx.conf
+```js
 server {
     listen       80;
     server_name  127.0.0.1;
@@ -335,13 +338,14 @@ server {
     add_header X-Frame-Options sameorigin always;
 
     location / {
-        root /app;
+        root /usr/src/app/;
         try_files $uri $uri/ /index.html;
         index index.html index.htm;
     }
 }
 ```
 
+- ./docker-compose.yml
 ```yml
 version: "3.5"
 
@@ -364,4 +368,5 @@ services:
 
 volumes:
   dist:
+
 ```
