@@ -1,48 +1,50 @@
-import { defineConfig } from "umi";
+import { defineConfig } from '@umijs/max';
 import routerConfig from "./src/routes";
 const proxyConfig = require("./src/config/proxyConfig");
-const docgenLoader = require("react-docgen-typescript-loader");
 const path = require("path");
 
 export default defineConfig({
   define: {
     "process.env": process.env,
   },
-  // base: "/",
+  base: '/',
   history: { type: "hash" },
-  publicPath:
-    process.env.APP_ENV === "development"
-      ? "/"
-      : "http://wangxince.site/node-script-router-inject-demo/",
-  nodeModulesTransform: {
-    type: "none",
+  // publicPath: process.env.APP_ENV === "development"
+  // ? "/"
+  // : "http://wangxince.site/node-script-router-inject-demo/",
+  antd: {
+    configProvider: {},
+    dark: false,
+    compact: true,
+    import: true,
+    style: 'less',
   },
-  mock: false,
-  hash: true,
-  dynamicImport: {},
+  access: {},
+  model: {},
+  initialState: {},
+  request: {},
   layout: {
-    title: "node脚本demo",
+    title: 'node脚本demo"',
     contentWidth: "Fluid",
-    navTheme: "light",
+    locale: false,
   },
-  theme: {
-    "primary-color": "#00CA88",
+  theme: { '@primary-color': '#00CA88' },
+  mock: {
+    include: ['src/mock/**.ts'],
   },
   routes: routerConfig,
   // proxy: proxyConfig,
-  fastRefresh: {},
-  mfsu: false,
-  panelTab: false,
-  // panelTab: {
-  //   use404: true,
-  //   useAuth: false,
-  //   autoI18n: true,
-  //   tabsLimit: 10,
-  //   tabsLimitWait: 500,
-  //   tabsLimitWarnTitle: "提示",
-  //   tabsLimitWarnContent: "您当前打开页面过多, 请关闭不使用的页面以减少卡顿!",
-  //   tabsBarBackgroundColor: "#FFFFFF",
-  //   tabsTagColor: "#1890ff",
-  // },
-  plugins: ["react-dev-inspector/plugins/umi/react-inspector"],
+  npmClient: 'yarn',
+  fastRefresh: true,
+  // 可以跳转到源码 option+click
+  clickToComponent: {},
+  forkTSChecker: {},
+  // 解决build后浏览器缓存问题
+  hash: false,
+  // 忽略Moment国际化
+  ignoreMomentLocale: false,
+  mfsu: true,
+  // 是否有 sourcemap  eval最快 source-map最慢
+  devtool: process.env.NODE_ENV === 'development' ? 'eval' : false,
 });
+

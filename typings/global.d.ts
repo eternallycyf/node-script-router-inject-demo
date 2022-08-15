@@ -10,6 +10,17 @@ declare module "*.xlsx";
 declare module "*.less";
 declare module "howtools";
 declare module "leaflet";
+declare module '*.css';
+declare module '*.less';
+declare module '*.png';
+
+declare module '*.svg' {
+  export function ReactComponent(
+    props: React.SVGProps<SVGSVGElement>,
+  ): React.ReactElement;
+  const url: string;
+  export default url;
+}
 
 export interface IGlobalModelState {
   theme: "dark" | "light";

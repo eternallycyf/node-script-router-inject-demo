@@ -1,33 +1,25 @@
 {
   "private": true,
+  "author": "eternallycyf <a969475322@gmail.com>",
   "scripts": {
     "biz-init": "ts-node scripts/generateBizConfig.ts",
-    "start": "rm -rf ./src/pages/.DS_Store && npm run biz-init && cross-env APP_ENV=development umi dev",
-    "build:dev": "npm run biz-init && cross-env APP_ENV=development umi build",
-    "build:pro": "npm run biz-init && cross-env APP_ENV=production umi build",
-    "postinstall": "umi generate tmp",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage",
-    "deploy:github": "bash ./deploy-github.sh",
-    "deploy:docker": "bash ./deploy-docker.sh"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
+    "start": "rm -rf ./src/pages/.DS_Store && npm run biz-init && cross-env APP_ENV=development max dev",
+    "build": "max build",
+    "build:dev": "npm run biz-init && cross-env APP_ENV=development max build",
+    "build:pro": "npm run biz-init && cross-env APP_ENV=production max build",
+    "format": "prettier --cache --write .",
+    "prepare": "husky install",
+    "postinstall": "max setup",
+    "setup": "max setup"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.1",
     "@ant-design/compatible": "^1.1.0",
     "@ant-design/icons": "^4.7.0",
+    "@ant-design/pro-components": "^1.1.3",
     "@ant-design/pro-layout": "^6.5.0",
+    "@umijs/max": "^4.0.12",
+    "antd": "^4.20.7",
     "classnames": "^2.3.1",
     "docx-preview": "^0.1.11",
     "docxtemplater": "3.5",
@@ -40,41 +32,25 @@
     "jszip-utils": "^0.1.0",
     "open-docxtemplater-image-module": "^1.0.3",
     "pizzip": "^3.1.1",
-    "react": "18.x",
-    "react-dom": "18.x",
     "react-excel-renderer": "^1.1.0",
     "react-file-viewer": "^1.2.1",
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
-    "three": "^0.143.0",
-    "umi": "^3.5.28",
-    "umi-plugin-panel-tabs": "0.0.28"
+    "three": "^0.143.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.9",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^2",
+    "prettier-plugin-packagejson": "^2",
+    "typescript": "^4.1.2",
     "@types/three": "0.143.0",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
-    "@umijs/fabric": "^2.2.2",
-    "@umijs/preset-react": "1.x",
-    "@umijs/test": "^3.5.28",
-    "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
     "ejs": "^3.1.6",
-    "eslint": "^8.21.0",
-    "eslint-plugin-jest": "^26.7.0",
-    "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-unicorn": "^43.0.2",
-    "lint-staged": "^10.0.7",
-    "prettier": "^2.2.0",
-    "react-dev-inspector": "^1.8.1",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.1.2",
-    "yorkie": "^2.0.0"
+    "ts-node": "^10.4.0"
   }
 }
