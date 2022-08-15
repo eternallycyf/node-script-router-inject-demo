@@ -9,9 +9,9 @@ export default defineConfig({
   },
   base: '/',
   history: { type: "hash" },
-  // publicPath: process.env.APP_ENV === "development"
-  // ? "/"
-  // : "http://wangxince.site/node-script-router-inject-demo/",
+  publicPath: process.env.APP_ENV === "development"
+    ? "/"
+    : "http://wangxince.site/node-script-router-inject-demo/",
   antd: {
     configProvider: {},
     dark: false,
@@ -19,6 +19,7 @@ export default defineConfig({
     import: true,
     style: 'less',
   },
+  dva: {},
   access: {},
   model: {},
   initialState: {},

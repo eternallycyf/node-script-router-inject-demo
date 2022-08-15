@@ -1,6 +1,6 @@
 import { Card, Select, Spin } from "antd";
 import { PageContainer } from "@ant-design/pro-layout";
-import { connect } from "umi";
+import { connect } from '@umijs/max';
 import type { IMyConnectState, IMyProps } from "./interface";
 import Charts from "./Components/charts";
 

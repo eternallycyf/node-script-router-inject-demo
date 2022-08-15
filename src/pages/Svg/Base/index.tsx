@@ -1,6 +1,5 @@
 import {} from "antd";
 import { PageContainer } from "@ant-design/pro-layout";
-import { history } from "umi";
 import RcCard from "@/components/RcCard";
 import { svgContent, svgBaseAPI, svgStyle, svgDemo } from "./constant";
 import MarkDown from "@/components/MarkDown";

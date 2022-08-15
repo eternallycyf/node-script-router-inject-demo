@@ -10,7 +10,8 @@
     "format": "prettier --cache --write .",
     "prepare": "husky install",
     "postinstall": "max setup",
-    "setup": "max setup"
+    "setup": "max setup",
+    "deploy:github": "bash ./deploy-github.sh"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.1",
