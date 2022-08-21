@@ -36,10 +36,10 @@ export default defineConfig({
   routes: routerConfig,
   // proxy: proxyConfig,
   npmClient: 'yarn',
-  fastRefresh: true,
+  // fastRefresh: true,
   // 可以跳转到源码 option+click
   clickToComponent: {},
-  forkTSChecker: {},
+  // forkTSChecker: {},
   // 解决build后浏览器缓存问题
   hash: false,
   // 忽略Moment国际化

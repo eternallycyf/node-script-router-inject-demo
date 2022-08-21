@@ -16,12 +16,20 @@
       ],
       "@@/*": [
         "src/.umi/*"
+      ],
+      "@/pages/*": [
+        "src/pages/*"
       ]
     },
     "allowSyntheticDefaultImports": true
   },
   "include": [
     "./typings/*.ts",
+    "mock/**/*",
+    "src/**/*",
+    "config/**/*",
+    ".umirc.ts",
+    "typings.d.ts"
   ],
   "exclude": [
     "node_modules",
