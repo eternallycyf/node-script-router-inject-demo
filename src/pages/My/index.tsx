@@ -3,6 +3,7 @@ import { PageContainer } from "@ant-design/pro-layout";
 import { connect } from "umi";
 import type { IMyConnectState, IMyProps } from "./interface";
 import Charts from "./Components/charts";
+import styles from './index.less'
 
 const My: React.FC = ({ list, myLoading }: IMyProps) => {
   console.log(myLoading, list);
@@ -13,8 +14,8 @@ const My: React.FC = ({ list, myLoading }: IMyProps) => {
         <Spin spinning={myLoading}>
           <Card
             title="我的"
-            style={{ margin: 24 }}
             extra={<Select options={list} style={{ width: 200 }} />}
+            className={styles.my}
           >
             <div>.</div>
             <div>├── Components</div>
