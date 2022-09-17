@@ -67,45 +67,6 @@ export default defineConfig({
     contentWidth: "Fluid",
     navTheme: "light",
   },
-  cssLoader: {
-    // 这里的 modules 可以接受 getLocalIdent
-    modules: {
-      getLocalIdent,
-    },
-  },
-  chainWebpack: (config) => {
-    // optimize chunks
-    config.optimization.runtimeChunk(false).splitChunks({
-      chunks: "async",
-      name: "vendors",
-      maxSize: 0,
-      cacheGroups: {
-        vendors: {
-          test: (modules) => {
-            const packageName = getModulePackageName(module);
-            if (packageName) {
-              return (
-                ["bizcharts", "@antv_data-set", "@ant-design_icons"].indexOf(
-                  packageName,
-                ) >= 0
-              );
-            }
-            return false;
-          },
-          name(module) {
-            const packageName = getModulePackageName(module);
-            if (["bizcharts", "@antv_data-set"].indexOf(packageName) >= 0) {
-              return "viz";
-            }
-            if (["@ant-design_icons"].indexOf(packageName) >= 0) {
-              return "icons";
-            }
-            return "misc";
-          },
-        },
-      },
-    });
-  },
   theme: {
     "primary-color": "#00CA88",
   },
